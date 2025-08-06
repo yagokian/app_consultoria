@@ -667,10 +667,33 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/servicos" element={<Servicos />} />
-              <Route path="/empresa" element={<div>Empresa (em desenvolvimento)</div>} />
-              <Route path="/configuracoes" element={<div>Configurações (em desenvolvimento)</div>} />
-              <Route path="/proposta/nova" element={<div>Nova Proposta (em desenvolvimento)</div>} />
-              <Route path="/historico" element={<div>Histórico (em desenvolvimento)</div>} />
+              <Route path="/empresa" element={
+                <Empresa 
+                  showSnackbar={useApp().showSnackbar}
+                  loadEmpresa={useApp().loadEmpresa}
+                  empresa={useApp().empresa}
+                />
+              } />
+              <Route path="/configuracoes" element={
+                <Configuracoes
+                  showSnackbar={useApp().showSnackbar}
+                  loadConfiguracoes={useApp().loadConfiguracoes}
+                  configuracoes={useApp().configuracoes}
+                />
+              } />
+              <Route path="/proposta/nova" element={
+                <NovaProposta
+                  showSnackbar={useApp().showSnackbar}
+                  servicos={useApp().servicos}
+                />
+              } />
+              <Route path="/historico" element={
+                <Historico
+                  showSnackbar={useApp().showSnackbar}
+                  propostas={useApp().propostas}
+                  loadPropostas={useApp().loadPropostas}
+                />
+              } />
             </Routes>
           </Layout>
         </BrowserRouter>
