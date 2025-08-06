@@ -1,5 +1,9 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Empresa } from './components/Empresa';
+import { Configuracoes } from './components/Configuracoes';
+import { NovaProposta } from './components/NovaProposta';
+import { Historico } from './components/Historico';
 import {
   ThemeProvider,
   createTheme,
