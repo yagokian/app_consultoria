@@ -656,6 +656,27 @@ const Servicos = () => {
   );
 };
 
+// Wrapper components para usar o Context
+const EmpresaWrapper = () => {
+  const { showSnackbar, loadEmpresa, empresa } = useApp();
+  return <Empresa showSnackbar={showSnackbar} loadEmpresa={loadEmpresa} empresa={empresa} />;
+};
+
+const ConfiguracoesWrapper = () => {
+  const { showSnackbar, loadConfiguracoes, configuracoes } = useApp();
+  return <Configuracoes showSnackbar={showSnackbar} loadConfiguracoes={loadConfiguracoes} configuracoes={configuracoes} />;
+};
+
+const NovaPropostaWrapper = () => {
+  const { showSnackbar, servicos } = useApp();
+  return <NovaProposta showSnackbar={showSnackbar} servicos={servicos} />;
+};
+
+const HistoricoWrapper = () => {
+  const { showSnackbar, propostas, loadPropostas } = useApp();
+  return <Historico showSnackbar={showSnackbar} propostas={propostas} loadPropostas={loadPropostas} />;
+};
+
 // App principal
 function App() {
   return (
@@ -667,33 +688,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/servicos" element={<Servicos />} />
-              <Route path="/empresa" element={
-                <Empresa 
-                  showSnackbar={useApp().showSnackbar}
-                  loadEmpresa={useApp().loadEmpresa}
-                  empresa={useApp().empresa}
-                />
-              } />
-              <Route path="/configuracoes" element={
-                <Configuracoes
-                  showSnackbar={useApp().showSnackbar}
-                  loadConfiguracoes={useApp().loadConfiguracoes}
-                  configuracoes={useApp().configuracoes}
-                />
-              } />
-              <Route path="/proposta/nova" element={
-                <NovaProposta
-                  showSnackbar={useApp().showSnackbar}
-                  servicos={useApp().servicos}
-                />
-              } />
-              <Route path="/historico" element={
-                <Historico
-                  showSnackbar={useApp().showSnackbar}
-                  propostas={useApp().propostas}
-                  loadPropostas={useApp().loadPropostas}
-                />
-              } />
+              <Route path="/empresa" element={<EmpresaWrapper />} />
+              <Route path="/configuracoes" element={<ConfiguracoesWrapper />} />
+              <Route path="/proposta/nova" element={<NovaPropostaWrapper />} />
+              <Route path="/historico" element={<HistoricoWrapper />} />
             </Routes>
           </Layout>
         </BrowserRouter>
